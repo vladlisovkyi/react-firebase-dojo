@@ -1,10 +1,9 @@
-// styles
-import './Avatar.css'
+import "./Avatar.css";
 
-export default function Avatar({ src }) {
+export default function Avatar({ src, className }) {
   return (
-    <div className="avatar ml-auto">
+    <div className={`avatar ml-auto ${className}`}>
       <img src={src} alt="user avatar" />
     </div>
-  )
+  );
 }

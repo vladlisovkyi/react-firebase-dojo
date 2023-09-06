@@ -6,14 +6,12 @@ export const useDocument = (collection, id) => {
   const [document, setDocument] = useState(null);
   const [error, setError] = useState(null);
 
-  // Realtime document data
   useEffect(() => {
     const ref = doc(db, collection, id);
 
     const unsubscribe = onSnapshot(
       ref,
       (snapshot) => {
-        // Need to make sure the doc exists & has data
         if (snapshot.exists()) {
           setDocument({ ...snapshot.data(), id: snapshot.id });
           setError(null);
@@ -27,7 +25,6 @@ export const useDocument = (collection, id) => {
       }
     );
 
-    // Unsubscribe on unmount
     return () => unsubscribe();
   }, [collection, id]);
 
